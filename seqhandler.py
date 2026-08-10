@@ -34,6 +34,13 @@ def revcomp(args):
     print(complement[::-1])
 
 
+def GC(args):
+    dna = args.dna
+    DNA = dna.upper()
+    GC = (int(DNA.count("G")) + int(DNA.count("C"))) / len(DNA)
+    print(f"{GC:.2f}")
+
+
 def main():
     parser = argparse.ArgumentParser("simple sequence manipulation suite")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -60,6 +67,11 @@ def main():
     )
     revcompsp.add_argument("dna", type=str, help="DNA string")
     revcompsp.set_defaults(func=revcomp)
+
+    # GC subparser
+    GCsp = subparsers.add_parser("GC", help="display GC content of a DNA string")
+    GCsp.add_argument("dna", type=str, help="DNA string")
+    GCsp.set_defaults(func=GC)
 
     args = parser.parse_args()
     args.func(args)
