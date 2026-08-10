@@ -1,7 +1,0 @@
-dna = input("enter DNA sequence")
-DNA = dna.upper()
-A = DNA.count("A")
-T = DNA.count("T")
-C = DNA.count("C")
-G = DNA.count("G")
-print(f"A:{A}\nT:{T}\nC:{C}\nG:{G}")
